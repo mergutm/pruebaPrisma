@@ -9,12 +9,12 @@ docker compose up -d
 npx prisma init
 ```
 
-modificar archivo .env
+## modificar archivo .env
 ```bash
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/mydb?schema=public"
 ```
 
-Agregar a prisma/schema.prisma
+## Agregar a prisma/schema.prisma
 ```js
 model Todo {
   id          String   @id @default(uuid())
@@ -31,6 +31,18 @@ npx prisma migrate dev
 ```
 
 Ya debería verse la BD actualizada usando algún visor de BD
+
+
+# Reiniciar la bD
+Reiniciar el contenido de la BD
+
+```bash
+npx prisma migrate reset
+```
+
+
+
+
 
 
  # crear el cliente para conectarse y hacer cambios en la BD
@@ -144,4 +156,13 @@ Indexes:
 
 ```
 \h
+```
+
+
+## Consulta
+```sql
+# SELECT * FROM "public"."Todo" ;
+ id | description | complete | createdAt | updatedAt 
+----+-------------+----------+-----------+-----------
+(0 rows)
 ```

@@ -37,3 +37,26 @@ model User {
   updatedAt DateTime @updatedAt
   todos     Todo[]
 }
+
+model Estudiante {
+  matricula      String         @id
+  nombre         String
+  grupo          String
+  calificaciones Calificacion[]
+}
+
+model Materia {
+  id_materia     Int            @id @default(autoincrement())
+  nombre_materia String
+  calificaciones Calificacion[]
+}
+
+model Calificacion {
+  id           Int    @id @default(autoincrement())
+  matricula    String
+  id_materia   Int
+  calificacion Float
+
+  estudiante Estudiante @relation(fields: [matricula], references: [matricula])
+  materia    Materia    @relation(fields: [id_materia], references: [id_materia])
+}
